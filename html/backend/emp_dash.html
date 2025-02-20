@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>EmailCHIMP | Responsive Bootstrap 4 Admin Dashboard Template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../assets/images/logo1.png" />
+    <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
+    <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.2">
+    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+    <link rel="stylesheet" href="../assets/vendor/remixicon/fonts/remixicon.css">
+    <link rel="stylesheet" href="../assets/vendor/@icon/dripicons/dripicons.css">
+    <style>
+ /* Default: Expanded sidebar - Show the logo */
+.iq-sidebar .header-logo img {
+    display: block;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Collapsed sidebar - Hide the logo */
+.iq-sidebar.collapsed .header-logo img {
+    display: none;
+}
+#notification-container {
+    max-height: 300px; /* Define the maximum height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+}
+
+.iq-sub-dropdown {
+    max-height: 350px; /* Ensure dropdown doesn't overflow */
+    overflow: hidden;  /* Prevent dropdown overflow */
+}
+
+.iq-sub-dropdown .card-body {
+    padding: 0; /* Ensure no extra padding interferes */
+}
+
+
+    </style>
+</head>
+
+<body class="email-chimp">
+    <!-- loader Start -->
+    <div id="loading">
+        <div id="loading-center">
+        </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+
+        <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                <a href="../backend/dashboard.html" class="header-logo">
+                    <img src="../assets/images/logo.png" class="img-fluid  light-logo" alt="logo">
+                </a>
+               
+                <div class="iq-menu-bt-sidebar">
+                        <svg class="svg-icon feather feather-repeat wrapper-menu animated rotation" id="sidebarToggle"
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 1 21 5 17 9"></polyline>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <polyline points="7 23 3 19 7 15"></polyline>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </div>
+            </div>
+            <div class="data-scrollbar" data-scroll="1">
+                <nav class="iq-sidebar-menu">
+                    <ul id="iq-sidebar-toggle" class="iq-menu">
+                        <li class="">
+                            <a href="../backend/dashboard.html" class="svg-icon">
+                                <svg class="svg-icon feather feather-home" width="20" height="20"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                <span class="ml-3">Dashboards</span>
+                            </a>
+                        </li>
+                      
+                        <li class="active">
+                            <a href="../backend/emp_dash.html" class="svg-icon">
+                                <svg class="svg-icon feather feather-user" width="20" height="20"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="8.5" cy="7" r="4"></circle>
+                            </svg>
+                                <span class="ml-3">Employees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="svg-icon" data-toggle="modal" data-target="#addUserModal">
+                                <svg class="svg-icon feather feather-user-plus" width="20" height="20"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                    <line x1="20" y1="8" x2="20" y2="14"></line>
+                                    <line x1="23" y1="11" x2="17" y2="11"></line>
+                                </svg>
+                                <span class="ml-3">Add Employees</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="svg-icon" id="logoutButton">
+                                <svg class="svg-icon feather feather-log-out" width="20" height="20"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                                <span class="ml-3">logout</span>
+                            </a>
+                        </li>
+                     
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="p-3"></div>
+            </div>
+        </div>
+        <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+                <nav class="navbar navbar-expand-lg navbar-light">
+
+                    <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                        <i class="ri-menu-line wrapper-menu"></i>
+                       
+                        <div class="navbar-breadcrumb">
+                            <h4>Dashboard</h4>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="iq-search-bar device-search">
+                            <form action="#" class="searchbox">
+                            <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                            <input type="text" id="searchInput" class="text search-input" placeholder="Search for your document , people,...">
+                            </form>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
+                            <i class="ri-menu-3-line"></i>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto navbar-list align-items-center">  
+                                <li class="nav-item nav-icon search-content">
+                                          <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              <i class="ri-search-line"></i>
+                                          </a>
+                                          <div class="iq-search-bar iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownSearch">
+                                              <form action="#" class="searchbox p-2">
+                                                  <div class="form-group mb-0 position-relative">
+                                                  <input type="text" class="text search-input font-size-12"  id="searchInput" placeholder="type here to search...">
+                                                  <a href="#" class="search-link"><i class="las la-search"></i></a> 
+                                                  </div>
+                                              </form>
+                                          </div>
+                                      </li>      
+                                    <li class="nav-item nav-icon dropdown"> 
+                                        <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButtontwo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="ri-notification-line"></i>
+                                            <span class="bg-primary dots"></span>
+                                        </a>
+                                        <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButtontwo">
+                                            <div class="card shadow-none m-0">
+                                                <div class="card-body p-0">
+                                                    <div class="p-4" id="notification-container">
+                                                        <!-- Notifications will be dynamically added here -->
+                                                        <!-- Example structure for notifications: -->
+                                                        <!-- <a href="#" class="iq-sub-card">
+                                                            <div class="media align-items-center cust-card pt-3">
+                                                                <div class="">
+                                                                    <img class="avatar-50 rounded-small" src="user_image.jpg" alt="User Image">
+                                                                </div>
+                                                                <div class="media-body ml-4">
+                                                                    <div class="d-flex align-items-center justify-content-between">
+                                                                        <h5 class="mb-0">Call details text</h5>
+                                                                        <small class="text-dark"><b>Call Date & Time</b></small>
+                                                                    </div>
+                                                                    <small class="mb-0 font-size-14">Additional Call Information</small>
+                                                                </div>
+                                                            </div>
+                                                        </a> -->
+                                                    </div>
+                                                    <a class="right-ic btn btn-primary btn-block position-relative iq-logout" href="#" role="button">
+                                                        Close
+                                                    </a>                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </div>
+
+                            </div>
+                </nav>
+            </div>
+        </div>
+        <div class="content-page">
+            <!-- Page end  -->
+            <!-- Add User Modal -->
+            <div class="modal fade" id="addUserModal" tabindex="-1" aria-labelledby="addUserModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addUserModalLabel">Employee Information</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-user-form">
+                                <div class="form-group">
+                                    <label for="user-name">Name</label>
+                                    <input 
+                                        type="text" 
+                                        id="user-name" 
+                                        name="name" 
+                                        class="form-control" 
+                                        placeholder="Enter name" 
+                                        pattern="^[A-Za-z\s]{3,50}$" 
+                                        title="Name should be 3 to 50 characters long and contain only letters and spaces." 
+                                        required
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-number">Mobile Number</label>
+                                    <input 
+                                        type="text" 
+                                        id="user-number" 
+                                        name="number" 
+                                        class="form-control" 
+                                        placeholder="Enter mobile number" 
+                                        pattern=^[5-9]{1}\d{9}$ 
+                                        title="Mobile number must start with 5 and be exactly 10 digits long."  
+                                        required   
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-password">Password</label>
+                                    <input 
+                                        type="password" 
+                                        id="user-password" 
+                                        name="password" 
+                                        class="form-control" 
+                                        placeholder="Enter password" 
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        title="Password must contain at least one number,
+                                         one uppercase and lowercase letter, and at least 8 or more characters."
+                                         required
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-gender">Gender</label>
+                                    <select 
+                                        id="user-gender" 
+                                        name="gender" 
+                                        class="form-control" 
+                                        required
+                                    >
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary">Add User</button>
+                            </form>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container-fluid">
+                <div id="user-dashboard" class="row">
+                    <!-- Dynamically added user cards will appear here -->
+                </div>
+            </div>
+
+
+
+            <div id="emptyMessage" style="display: none;">
+                No conversation found.
+            </div>
+
+            <!-- Page end  -->
+        </div>
+        <!-- Custom JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- JavaScript -->
+        <script>
+            // JavaScript to toggle sidebar state
+document.getElementById('sidebarToggle').addEventListener('click', function () {
+    const sidebar = document.querySelector('.iq-sidebar');
+    sidebar.classList.toggle('collapsed');
+});
+
+              // JavaScript to handle search and display results
+    const searchInput = document.querySelector('#searchInput');  // Get the search input field
+    const userDashboard = document.querySelector('#user-dashboard');  // Container to display user cards
+
+    // Event listener for search input
+    searchInput.addEventListener('input', function () {
+        const query = this.value.toLowerCase().trim();  // Get the input value and convert it to lowercase
+
+        // Loop through all user cards in the dashboard and filter them
+        const userCards = userDashboard.querySelectorAll('.card');
+        userCards.forEach(card => {
+            const name = card.querySelector('h5').textContent.toLowerCase();  // Extract the name from the card
+            // const email = card.querySelector('p').textContent.toLowerCase();  // Extract the email from the card
+            const number = card.querySelector('p').textContent.toLowerCase();  // Extract the email from the card
+            // If the name or email includes the query, show the card, otherwise hide it
+            if (name.includes(query)  || number.includes(query)) {
+                card.style.display = 'block';  // Show card
+            } else {
+                card.style.display = 'none';  // Hide card
+            }
+        });
+    });
+  $(document).ready(function () {
+    fetchUsers(); // Fetch and display employees on page load
+
+    // Function to fetch employees
+    function fetchUsers() {
+        $.ajax({
+            url: 'emp_data.php', // PHP script to fetch employees
+            type: 'GET',
+            success: function (response) {
+                const users = JSON.parse(response);
+
+                $('#user-dashboard').empty(); // Clear the dashboard
+                if (users.length > 0) {
+                    users.forEach(function (user) {
+                        const genderIcon = user.gender.toLowerCase() === 'male'
+                            ? '/email-chimp/html/assets/images/user/men.png' // Male profile image path
+                            : '/email-chimp/html/assets/images/user/girl.png'; // Female profile image path
+
+                        const userCard = `
+                            <div class="col-md-6 mb-3">
+                                  <a href="emp-forms.html?emp_id=${encodeURIComponent(user.id)}" style="text-decoration: none;">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <img src="${genderIcon}" alt="Profile Image" class="img-fluid rounded-circle mb-2" style="width: 80px; height: 80px;">
+                                        <h5>${user.name}</h5>
+                                        <p>${user.number}</p>
+                                    </div>
+                                </div>
+                                 </a>
+                            </div>
+                        `;
+                        $('#user-dashboard').append(userCard);
+                    });
+                } else {
+                    $('#user-dashboard').append('<p>No employees found.</p>');
+                }
+            },
+            error: function () {
+                alert('Failed to fetch employees.');
+            }
+        });
+    }
+
+    // Handle form submission to add a new employee
+    $('#add-user-form').on('submit', function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        const formData = {
+            name: $('#user-name').val(),
+            password: $('#user-password').val(),
+            gender: $('#user-gender').val(),
+            number: $('#user-number').val()
+        };
+
+        $.ajax({
+            url: 'emp_data.php', // PHP script to add employee
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                const result = JSON.parse(response);
+                if (result.success) {
+                    const genderIcon = result.data.gender.toLowerCase() === 'male'
+                        ? '/email-chimp/html/assets/images/user/men.png'
+                        : '/email-chimp/html/assets/images/user/girl.png';
+
+                    const userCard = `
+                        <div class="col-md-6 mb-3">
+                              <a href="emp-forms.html?emp_id=${encodeURIComponent(user.id)}" style="text-decoration: none;">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <img src="${genderIcon}" alt="Profile Image" class="img-fluid rounded-circle mb-2" style="width: 80px; height: 80px;">
+                                    <h5>${result.data.name}</h5>
+                                    <p>${result.data.number}</p>
+                                </div>
+                            </div>
+                             </a>
+                        </div>
+                    `;
+                    $('#user-dashboard').append(userCard); // Add the new employee to the dashboard
+                    $('#addUserModal').modal('hide'); // Close the modal
+                    $('#add-user-form')[0].reset(); // Reset the form
+                } else {
+                    alert('Error: ' + result.message);
+                }
+            },
+            error: function () {
+                alert('An error occurred. Please try again.');
+            }
+        });
+    });
+});
+
+// logout button with confirmation
+document.getElementById('logoutButton').addEventListener('click', function () {
+    // Display a confirmation prompt before proceeding
+    if (confirm("Are you sure you want to logout?")) {
+        // Perform AJAX request to logout the user
+        $.ajax({
+            url: 'logoutSession.php', // PHP script for ending session
+            type: 'POST',
+            success: function (response) {
+                // On success, display an alert and redirect the user
+                alert("logout successful!");
+                window.location.href = "/email-chimp/index.html"; // Redirect to login page
+            },
+            error: function () {
+                // On error, display an alert for the failure
+                alert("Error! Failed to log out. Please try again.");
+            }
+        });
+    } else {
+        // User canceled the logout action
+        console.log("logout canceled");
+    }
+});
+
+//------------------------end------------------------------------------------
+//--------------------notifaction-start------------------------------------------
+// Fetch notifications when the dropdown is opened
+// $('#dropdownMenuButtontwo').on('click', function() {
+//     //  var cust_id = fetchNotifications();  // Get the cust_id from URL query string
+//     fetchNotifications();
+//     if (cust_i1d) {
+//         // var cust_id = fetchNotifications();
+//         // fetchNotifications();  // Pass the email dynamically
+//     } else {
+//         console.error("customer id is missing in the URL.");
+//         $('#notification-container').html('<p>customer id is missing in the URL.</p>');
+//     }
+// });
+// function fetchNotifications() {
+//     $.ajax({
+//         url: 'notifications.php', // PHP file for fetching data
+//         type: 'POST', // You can switch to POST if required
+//         success: function(response) {
+//             console.log("Response from server:", response); // Log the response for debugging
+
+//             let notificationsHtml = '';
+
+//             // Check if there are call details to display
+//             if (response.length > 0) {
+//                 response.forEach(function(call) {
+//                     notificationsHtml += `
+//                         <a href="page-forms.html?cust_id=${encodeURIComponent(call.id)}" class="iq-sub-card" data-call-id="${call.id}" onclick="showCallDetails(${call.id})">
+//                             <div class="media align-items-center cust-card pt-3">
+//                                 <div class="media-body ml-4 notification-container">
+//                                     <div class="d-flex align-items-center justify-content-between">
+//                                         <h5 class="mb-0"><small>Call details:</small></h5>
+//                                         <small class="text-dark"><b>${call.callDate}</b></small>
+//                                     </div>
+//                                     <div class="d-flex align-items-center justify-content-between">
+//                                         <h5 class="mb-0">${call.details}</h5>
+//                                         <small class="text-dark"><b>${call.callTime}</b></small>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </a>
+//                     `;
+//                 });
+//             } else {
+//                 notificationsHtml = '<p>No call details found.</p>';
+//             }
+
+//             // Insert the notifications into the HTML container
+//             $('#notification-container').html(notificationsHtml);
+//         },
+//         error: function(xhr, status, error) {
+//             console.error('AJAX error:', status, error);
+//             $('#notification-container').html('<p>Failed to fetch notifications.</p>');
+//         }
+//     });
+// }
+    
+        </script>
+
+
+
+        <!-- Backend Bundle JavaScript -->
+        <script src="../assets/js/backend-bundle.min.js"></script>
+
+        <!-- Table Treeview JavaScript -->
+        <script src="../assets/js/table-treeview.js"></script>
+
+        <!-- SweetAlert JavaScript -->
+        <script src="../assets/js/sweetalert.js"></script>
+
+        <!-- Vectoe Map JavaScript -->
+        <script src="../assets/js/vector-map-custom.js"></script>
+
+        <!-- Chart Custom JavaScript -->
+        <script src="../assets/js/chart-custom.js"></script>
+
+        <!-- slider JavaScript -->
+        <script src="../assets/js/slider.js"></script>
+
+        <!-- app JavaScript -->
+        <script src="../assets/js/app.js"></script>
+</body>
+
+</html>

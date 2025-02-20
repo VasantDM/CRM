@@ -1,0 +1,720 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>       <!-- SweetAlert CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="../assets/images/logo1.png" />
+      <link rel="stylesheet" href="../assets/css/backend-plugin.min.css">
+      <link rel="stylesheet" href="../assets/css/backend.css?v=1.0.2">
+      <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="../assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="../assets/vendor/remixicon/fonts/remixicon.css">
+      <link rel="stylesheet" href="../assets/vendor/@icon/dripicons/dripicons.css"> 
+      <!-- <link rel="shortcut icon" href="../assets/images/logo.png" /> -->
+      <style>
+        /* Default: Expanded sidebar - Show the logo */
+       .iq-sidebar .header-logo img {
+           display: block;
+           transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+       }
+       
+       /* Collapsed sidebar - Hide the logo */
+       .iq-sidebar.collapsed .header-logo img {
+           display: none;
+       }
+
+
+       /* Style for the notification card */
+.iq-sub-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px;
+    text-decoration: none;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.iq-sub-card:hover {
+    background-color: #f7f7f7;
+}
+
+/* Ensure the media content (image) and text are aligned */
+.media-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+    word-wrap: break-word; /* To handle long texts */
+}
+
+/* Styling for the title section */
+.iq-sub-card h5 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Styling for the date and time section */
+.text-dark {
+    font-size: 14px;
+    font-weight: normal;
+    color: #333;
+}
+
+/* Ensuring that the details text fits properly */
+.iq-sub-card small {
+    font-size: 14px;
+    color: #777;
+    word-wrap: break-word; /* Prevent overflow of long text */
+}
+
+/* Handle long text gracefully */
+.iq-sub-card .media-body .font-size-14 {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal; /* Ensure text can wrap */
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* Add some space at the bottom of the card for longer details */
+.iq-sub-card .media-body .font-size-14 {
+    margin-top: 5px;
+    max-height: 100px;  /* Set max height if content overflows */
+    overflow-y: auto; /* Add scroll if content is too long */
+}
+
+       
+           </style>
+       </head>
+       
+  <body class="email-chimp ">
+    <!-- loader Start -->
+    <div id="loading">
+          <div id="loading-center">
+          </div>
+    </div>
+    <!-- loader END -->
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+      
+        <div class="iq-sidebar  sidebar-default ">
+            <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
+                <a href="../backend/dashboard.html" class="header-logo">
+                    <img src="../assets/images/logo.png" class="img-fluid  light-logo" alt="logo">
+                </a>
+               
+                <div class="iq-menu-bt-sidebar">
+                        <svg class="svg-icon feather feather-repeat wrapper-menu animated rotation" id="sidebarToggle"
+                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="17 1 21 5 17 9"></polyline>
+                            <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                            <polyline points="7 23 3 19 7 15"></polyline>
+                            <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                        </svg>
+                    </div>
+          </div>
+          <div class="data-scrollbar" data-scroll="1">
+              <nav class="iq-sidebar-menu">
+                        <ul id="iq-sidebar-toggle" class="iq-menu">
+                             <li class="">
+                                  <a href="../backend/dashboard.html" class="svg-icon">                        
+                                          <svg class="svg-icon feather feather-home"  width="20" height="20" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                          </svg>
+                                      <span class="ml-3">Dashboards</span>
+                                  </a>
+                             </li> 
+                             <li class="">
+                                <a href="../backend/emp_dash.html" class="svg-icon">                        
+                                    <svg class="svg-icon feather feather-user" width="20" height="20"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="8.5" cy="7" r="4"></circle>
+                                </svg>
+                                    <span class="ml-3">Employees</span>
+                                </a>
+                           </li> 
+                       
+                             <li class="active">
+                                    <a href="../backend/page-forms.html" class="">
+                                        <svg class="svg-icon feather feather-file-minus" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                                        <span class="ml-3">Forms</span>
+                                    </a>
+                                <ul id="forms" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                                </ul>
+                             </li>
+                        </ul>
+                    </nav>
+              <div class="p-3"></div>
+          </div>
+          </div>       <div class="iq-top-navbar">
+          <div class="iq-navbar-custom">
+              <nav class="navbar navbar-expand-lg navbar-light">
+      
+              <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
+                  <i class="ri-menu-line wrapper-menu"></i>
+                 
+                  <div class="navbar-breadcrumb">
+                                  <h4>Conversation</h4>
+                              </div>
+              </div>
+
+             
+              <div class="d-flex align-items-center justify-content-between">
+                  <div class="iq-search-bar device-search">
+                      <form action="#" class="searchbox">
+                      <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                      <input type="text" id="searchBar" class="text search-input" placeholder="Search for your document , people,...">
+                      </form>
+                  </div>
+                  <div class="d-flex align-items-center">
+                      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-label="Toggle navigation">
+                      <i class="ri-menu-3-line"></i>
+                      </button>
+                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav ml-auto navbar-list align-items-center">  
+                          <li class="nav-item nav-icon search-content">
+                                    <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="ri-search-line"></i>
+                                    </a>
+                                    <div class="iq-search-bar iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownSearch">
+                                        <form action="#" class="searchbox p-2">
+                                            <div class="form-group mb-0 position-relative">
+                                            <input type="text" class="text search-input font-size-12"  id="searchInput" placeholder="type here to search...">
+                                            <a href="#" class="search-link"><i class="las la-search"></i></a> 
+                                            </div>
+                                        </form>
+                                    </div>
+                                </li>               
+                                <li class="nav-item nav-icon dropdown"> 
+                                    <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButtontwo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="ri-notification-line"></i>
+                                        <span class="bg-primary dots"></span>
+                                    </a>
+                                    <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButtontwo">
+                                        <div class="card shadow-none m-0">
+                                            <div class="card-body p-0">
+                                                <div class="p-4" id="notification-container">
+                                                    <!-- Notifications will be dynamically added here -->
+                                                    <!-- Example structure for notifications: -->
+                                                    <!-- <a href="#" class="iq-sub-card">
+                                                        <div class="media align-items-center cust-card pt-3">
+                                                            <div class="">
+                                                                <img class="avatar-50 rounded-small" src="user_image.jpg" alt="User Image">
+                                                            </div>
+                                                            <div class="media-body ml-4">
+                                                                <div class="d-flex align-items-center justify-content-between">
+                                                                    <h5 class="mb-0">Call details text</h5>
+                                                                    <small class="text-dark"><b>Call Date & Time</b></small>
+                                                                </div>
+                                                                <small class="mb-0 font-size-14">Additional Call Information</small>
+                                                            </div>
+                                                        </div>
+                                                    </a> -->
+                                                </div>
+                                                <a class="right-ic btn btn-primary btn-block position-relative iq-logout" href="#" role="button">
+                                                   Close
+                                                </a>                                   
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+      
+
+                          
+                  </div>
+              </nav>
+          </div>
+      </div>
+      <div class="content-page">
+        <!-- Modal for adding data -->
+        <div class="modal fade" id="addDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+    
+                        <!-- Tab Content -->
+                        <div class="tab-content mt-3">
+                            <!-- Conversation Form -->
+                            <div class="tab-pane fade show active" id="conversation-form-tab" role="tabpanel" aria-labelledby="conversation-tab">
+                                <form id="conversation-form">
+                                    <input type="hidden" id="cust_id" name="cust_id" value="">
+                                    <div class="form-group">
+                                        <label for="date">Date</label>
+                                        <input type="date" id="date" name="date" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="time">Time</label>
+                                        <input type="time" id="time" name="time" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="adminName">Admin Name</label>
+                                        <input type="text" id="adminName" name="adminName" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_conversation">User Conversation</label>
+                                        <textarea id="user_conversation" name="user_conversation" class="form-control" required></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="admin_conversation">Admin Conversation</label>
+                                        <textarea id="admin_conversation" name="admin_conversation" class="form-control" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+    
+                            <!-- Add Call Form -->
+                            <div class="tab-pane fade" id="add-call-form-tab" role="tabpanel" aria-labelledby="add-call-tab">
+                                <form id="call-form">
+                                    <input type="hidden" id="cust_id" name="cust_id" value="">
+                                    <div class="form-group">
+                                        <label for="callDate">Call Date</label>
+                                        <input type="date" id="callDate" name="callDate" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="callTime">Call Time</label>
+                                        <input type="time" id="callTime" name="callTime" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="callDetails">Call Details</label>
+                                        <textarea id="callDetails" name="details" class="form-control" required></textarea>
+                                    </div>
+                                   
+
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+    
+    
+        <!-- Table to display the conversations -->
+        <table id="conversationTable" class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Customer Name</th>
+                    <th>Date Time</th>
+                    <!-- <th>Admin Name</th> -->
+                    <th>User Conversation</th>
+                    <th>Employee Conversation  </th>
+                    <!-- <th>action</th> -->
+                </tr>
+            </thead>
+            <tbody id="conversation-table">
+                <!-- Data will be injected here dynamically -->
+            </tbody>
+        </table>
+    
+        <div id="emptyMessage" style="display: none;">
+            No conversation found.
+        </div>
+    </div>
+</div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+
+   // Set today's date as the minimum date for the input
+      const today = new Date().toISOString().split('T')[0];
+    document.getElementById('callDate').setAttribute('min', today);
+    
+       // JavaScript to toggle sidebar state
+document.getElementById('sidebarToggle').addEventListener('click', function () {
+    const sidebar = document.querySelector('.iq-sidebar');
+    sidebar.classList.toggle('collapsed');
+});
+
+document.getElementById('searchBar').addEventListener('input', function () {
+    const searchTerm = this.value.toLowerCase(); // Get the search term
+    const rows = document.querySelectorAll('#conversationTable tbody tr'); // Select all rows
+
+    rows.forEach(row => {
+        const rowText = row.innerText.toLowerCase(); // Get the row text
+        if (rowText.includes(searchTerm)) {
+            row.style.display = ''; // Show the row if it matches
+        } else {
+            row.style.display = 'none'; // Hide the row if it doesn't match
+        }
+    });
+});
+
+  document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const emp_id = urlParams.get('emp_id');
+
+        if (emp_id && emp_id.trim() !== '') {
+            $('#cust_id').val(emp_id);
+            $('#cust_id-display').html(`<p>Viewing data for: <strong>${emp_id}</strong></p>`);
+            fetchConversations(emp_id);
+        } else {
+            alert('No Id provided in the URL.');
+        }
+
+       
+    });
+// Function to fetch conversations
+function fetchConversations(id) {
+    $.ajax({
+        url: `emp_conv.php?emp_id=${encodeURIComponent(id)}`,
+        type: 'GET',
+        success: function (response) {
+            try {
+                const data = typeof response === 'string' ? JSON.parse(response) : response;
+                let rows = '';
+                // Update the admin name in the navbar
+                // document.getElementById('customer_name').textContent = `(${data.customer_name})`;
+                                if (data.length > 0) {
+                    data.forEach(convo => {
+                        rows += `
+                            <tr data-id="${convo.id}">
+                                <td>${convo.cust_id}</td>
+                                <td class="editable">${convo.customer_name}</td>
+                               <td class="editable">${convo.date} </td>
+                                <td class="editable">${convo.user_conversation}</td>
+                                <td class="editable">${convo.admin_conversation}</td>
+                              
+                            </tr>
+                        `;
+                    });
+                    // <td>
+                    //                 <i class="fas fa-edit editBtn" style="font-size:24px; cursor:pointer;"></i>
+                    //                 <i class="fas fa-trash-alt deleteBtn" style="font-size:24px; color:red; cursor:pointer;" data-id="${convo.id}"></i>
+                    //             </td>
+                } else {
+                    rows = '<tr><td colspan="6">No conversations found for this email.</td></tr>';
+                }
+
+                $('#conversation-table').html(rows);
+            } catch (e) {
+                console.error('Error parsing JSON:', e);
+                alert('Failed to load data.');
+            }
+        },
+        error: function () {
+            alert('Failed to fetch conversations.');
+        }
+    });
+}
+
+$('#conversation-form').on('submit', function (e) {
+    e.preventDefault();
+
+    const emp_id = $('#emp_id').val();
+    const date = $('input[name="date"]').val();
+    const time = $('input[name="time"]').val();
+    const adminName = $('input[name="adminName"]').val();
+    const user_conversation = $('textarea[name="user_conversation"]').val();
+    const admin_conversation = $('textarea[name="admin_conversation"]').val();
+
+    // Basic validation to ensure no field is empty
+    if (!emp_id || !date || !time || !adminName || !user_conversation || !admin_conversation) {
+        alert('All fields are required.');
+        return; // Prevent submission if fields are empty
+    }
+
+    const formData = $(this).serializeArray();  // Serialize the form data
+
+    $.ajax({
+        url: 'emp_conv.php',
+        type: 'POST',
+        data: $.param(formData),  // Send data as serialized string
+        success: function (response) {
+            // Handle response after submission
+            try {
+                // Check if response is a valid JSON string
+                const result = typeof response === 'string' ? JSON.parse(response) : response;
+
+                if (result.success) {
+                    alert('Conversation added successfully!');
+                    fetchConversations(cust_id);  // Refresh the conversations list after submission
+                } else {
+                    alert('Error: ' + result.error);
+                }
+            } catch (e) {
+                console.error('Error parsing JSON:', e);
+                alert('Failed to parse the response or something went wrong.');
+            }
+        },
+        error: function () {
+            alert('Failed to submit data.');
+        }
+    });
+});
+// Edit functionality
+$(document).on('click', '.editBtn', function () {
+    const row = $(this).closest('tr');
+    row.find('.editable').each(function () {
+        const content = $(this).text();
+        $(this).html(`<input type="text" class="form-control" value="${content}">`);
+    });
+
+    $(this).replaceWith('<button class="btn btn-primary saveBtn">Save</button>');
+});
+
+// Save functionality
+$(document).on('click', '.saveBtn', function () {
+    const row = $(this).closest('tr');
+    const id = row.data('id');  // Retrieve row ID
+    const cust_id = $('#cust_id').val();
+
+    // Collect updated data
+    const updatedData = [];
+    row.find('.editable input').each(function () {
+        updatedData.push($(this).val());
+    });
+
+    const [date, time,adminName, user_conversation, admin_conversation] = updatedData;
+
+    // Send updated data via AJAX
+    $.ajax({
+        url: 'updateConversation.php', // PHP script to handle updates
+        type: 'POST',
+        data: {
+            id: id,
+            date: date,
+            time: time,
+            adminName: adminName,
+            user_conversation: user_conversation,
+            admin_conversation: admin_conversation
+        },
+        success: function (response) {
+            if (response.trim() === 'success') {
+                Swal.fire('Updated!', 'Record updated successfully.', 'success').then(() => {
+                    fetchConversations(cust_id); // Refresh table
+                });
+            } else {
+                Swal.fire('Error!', 'Failed to update record.', 'error');
+            }
+        },
+        error: function () {
+            Swal.fire('Error!', 'Something went wrong.', 'error');
+        }
+    });
+});
+
+// Delete functionality
+$(document).on('click', '.deleteBtn', function () {
+    const id = $(this).data('id');
+    const cust_id = $('#cust_id').val();
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "This action cannot be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: 'deleteConversation.php',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response.trim() === 'success') {
+                        Swal.fire('Deleted!', 'Record has been deleted.', 'success').then(() => {
+                            fetchConversations(cust_id);
+                        });
+                    } else {
+                        Swal.fire('Error!', 'Failed to delete record.', 'error');
+                    }
+                },
+                error: function () {
+                    Swal.fire('Error!', 'Something went wrong.', 'error');
+                }
+            });
+        }
+    });
+});
+// 
+
+// Handle form submission
+$('#call-form').on('submit', function (e) {
+    e.preventDefault();
+
+    const cust_id = $('#cust_id').val();
+    const date = $('input[name="callDate"]').val();
+    const time = $('input[name="callTime"]').val();
+    const details = $('textarea[name="details"]').val();
+
+    // Basic validation
+    if (!cust_id || !date || !time || !details) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'All fields are required.'
+        });
+        return; // Prevent submission if fields are empty
+    }
+
+    const formData = {
+        cust_id: cust_id,
+        callDate: date,
+        callTime: time,
+        details: details,
+    };
+
+    $.ajax({
+        url: 'emp_data.php',
+        type: 'POST',
+        data: formData,
+        success: function (response) {
+            try {
+                const result = typeof response === 'string' ? JSON.parse(response) : response;
+
+                if (result.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: result.message || 'Call details added successfully!'
+                    }).then(function () {
+                        location.reload(); // Page refresh after user clicks "OK"
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: result.message || 'An unknown error occurred.'
+                    });
+                }
+            } catch (e) {
+                console.error('Error parsing JSON:', e);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to parse the response or something went wrong.'
+                });
+            }
+        },
+        error: function () {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to submit call details.'
+            });
+        }
+    });
+});
+// Function to get email from URL query string
+function getEmailFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('emp_id');  // Assuming the cust_id is passed as a query parameter, e.g. ?email=example@example.com
+}
+
+// Fetch notifications when the dropdown is opened
+$('#dropdownMenuButtontwo').on('click', function() {
+    const emp_id = getEmailFromURL();  // Get the cust_id from URL query string
+
+    if (emp_id) {
+        fetchNotifications(emp_id);  // Pass the email dynamically
+    } else {
+        console.error("customer id is missing in the URL.");
+        $('#notification-container').html('<p>customer id is missing in the URL.</p>');
+    }
+});
+
+// Function to fetch and display notifications
+function fetchNotifications(emp_id) {
+    $.ajax({
+        url: 'emp_data.php', // PHP file for fetching data
+        type: 'GET',
+        data: { emp_id: emp_id }, // Pass email to fetch related call details
+        success: function(response) {
+            console.log("Response from server:", response);  // Log the response for debugging
+
+            // Check if the response contains an error
+            if (response.error) {
+                console.error('Error:', response.error);
+                $('#notification-container').html('<p>No call details found for this email.</p>');
+                return;
+            }
+
+            let notificationsHtml = '';
+            
+            // Check if there are call details to display
+            if (response.length > 0) {
+                response.forEach(function(call) {
+                    notificationsHtml += `
+                        <a href="#" class="iq-sub-card" data-call-id="${call.id}" onclick="showCallDetails(${call.id})">
+                            <div class="media align-items-center cust-card pt-3">
+                                
+                                <div class="media-body ml-4">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <h5 class="mb-0"><small>Call details:</small></h5>
+                                        <small class="text-dark"><b>${call.callDate}</b></small>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-between">
+                                           <h5 class="mb-0">${call.details}</h5>
+                                            <small class="text-dark"><b> ${call.callTime}</b></small>
+                                        </div>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                });
+            } else {
+                notificationsHtml = '<p>No call details found for this email.</p>';
+            }
+
+            // Insert the notifications into the HTML container
+            $('#notification-container').html(notificationsHtml);
+        },
+        error: function(xhr, status, error) {
+            console.error('AJAX error:', status, error);
+            $('#notification-container').html('<p>Failed to fetch notifications.</p>');
+        }
+    });
+}
+
+
+</script>
+
+
+
+     
+    <!-- Backend Bundle JavaScript -->
+    <script src="../assets/js/backend-bundle.min.js"></script>
+    
+    <!-- Table Treeview JavaScript -->
+    <script src="../assets/js/table-treeview.js"></script>
+    
+    <!-- SweetAlert JavaScript -->
+    <script src="../assets/js/sweetalert.js"></script>
+    
+    <!-- Vectoe Map JavaScript -->
+    <script src="../assets/js/vector-map-custom.js"></script>
+    
+    <!-- Chart Custom JavaScript -->
+    <script src="../assets/js/chart-custom.js"></script>
+    
+    <!-- slider JavaScript -->
+    <script src="../assets/js/slider.js"></script>
+    
+    <!-- app JavaScript -->
+    <script src="../assets/js/app.js"></script>
+  </body>
+</html>
