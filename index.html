@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>      
+      <!-- Favicon -->
+      <link rel="shortcut icon" href="../email-chimp/html/assets/images/logo.png" />
+      <link rel="stylesheet" href="../email-chimp/html/assets/css/backend-plugin.min.css">
+      <link rel="stylesheet" href="../email-chimp/html/assets/css/backend.css?v=1.0.2">
+      <link rel="stylesheet" href="../email-chimp/html/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="../email-chimp/html/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css">
+      <link rel="stylesheet" href="../email-chimp/html/assets/vendor/remixicon/fonts/remixicon.css">
+      <link rel="stylesheet" href="../email-chimp/html/assets/vendor/@icon/dripicons/dripicons.css"> 
+      <link rel="shortcut icon" href="../assets/images/logo.png" />
+    </head>
+  <body class=" ">
+    <!-- loader Start
+    <div id="loading">
+          <div id="loading-center">
+          </div>
+    </div> -->
+    <!-- loader END -->
+    
+      <div class="wrapper">
+      <section class="login-content">
+         <div class="container h-100">
+            <div class="row align-items-center justify-content-center h-100">
+               <div class="col-12">
+                  <div class="row align-items-center">
+                     <div class="col-lg-6">
+                        <h2 class="mb-2">Sign In</h2>
+                        <p>To Keep connected with us please login with your personal info.</p>
+                        <form>
+                           <div class="row">
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label class="mb-0">Number</label>
+                                    <input 
+                                    type="text" 
+                                    id="number" 
+                                    name="number" 
+                                    class="form-control" 
+                                    placeholder="Enter mobile number" 
+                                    pattern=^[5-9]{1}\d{9}$ 
+                                    title="Mobile number must start with 5 and be exactly 10 digits long."  
+                                    required   
+                                >
+                                 </div>
+                              </div>
+                              <div class="col-lg-12">
+                                 <div class="form-group">
+                                    <label class="mb-0">Password</label>
+                                    <input class="form-control" type="password" name="password" id="password" placeholder="Enter Password ">
+                                 </div>
+                              </div>
+                             
+                              
+                           </div>
+                           <button type="button" class="btn btn-primary btn-lg"  onclick="signIn();">Sign In</button>
+                         
+                        </form>
+                     </div>
+                     <div class="col-lg-6 mb-lg-0 mb-4 mt-lg-0 mt-4">
+                        <img src="../email-chimp/html/assets/images/login/01.png" class="img-fluid w-80" alt="">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+      <script>
+        //  function signIn() {
+        //    var email = $("#email").val();
+        //    var password = $("#password").val();
+        //    if(email == 'admin@crawlerstechnologies.com'  && password == 'Admin@1122') {
+        //        alert("Login Successfull!")
+        //        window.location.href = "../email-chimp/html/backend/dashboard.html";
+        //    } else {
+        //        alert("Enter Valid Credentials!")
+        //    }
+        //  }
+         // Attach validateForm1 to window for global access
+         document.addEventListener("DOMContentLoaded", function() {
+    window.signIn = function() {
+        const number = document.getElementById("number").value;
+        const password = document.getElementById("password").value;
+
+        if (!number || !password) {
+            swal("Error", "Please enter your number and password!", "error");
+            return;
+        }
+
+        $.ajax({
+            url: "login.php",
+            type: "POST",
+            data: {
+                login: true,
+                number: number,
+                password: password,
+            },
+            success: function (response) {
+    try {
+        if (response === "1") {
+            swal("Success", "Admin Login Successful!", "success").then(() => {
+                window.location.href = "../email-chimp/html/backend/dashboard.html";
+            });
+        } else if (response === "2") {
+            swal("Success", "Customer Login Successful!", "success").then(() => {
+                window.location.href = "../email-chimp/html/backend/customer.html";
+            });
+        } else if (response === "3") {
+            swal("Success", "Employee Login Successful!", "success").then(() => {
+                window.location.href = "../email-chimp/html/backend/dashboard.html";
+            });
+        } else {
+            swal("Error", "Invalid credentials. Please try again.", "error");
+        }
+    } catch (error) {
+        console.error("Error in success callback:", error);
+    }
+},
+            error: function() {
+                swal("Error", "An error occurred. Please try again later.", "error");
+            }
+        });
+    };
+});
+
+
+
+     </script>
+         <!-- SweetAlert CDN -->
+         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <!-- Backend Bundle JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/backend-bundle.min.js"></script> -->
+    
+    <!-- Table Treeview JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/table-treeview.js"></script> -->
+    
+    <!-- SweetAlert JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/sweetalert.js"></script> -->
+    
+    <!-- Vectoe Map JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/vector-map-custom.js"></script> -->
+    
+    <!-- Chart Custom JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/chart-custom.js"></script> -->
+    
+    <!-- slider JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/slider.js"></script> -->
+    
+    <!-- app JavaScript -->
+    <!-- <script src="../email-chimp/html/assets/js/app.js"></script> -->
+  </body>
+</html>
